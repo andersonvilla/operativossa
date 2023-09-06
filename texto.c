@@ -38,12 +38,26 @@ int get_index_of_node(char *node_to_check){
 }
 
 void print_adj(){
+    printf("  ");
     for(int i=0; i<number_of_nodes; i++){
+        fputs(nodes[i],stdout);
+        printf(" ");
+    }
+    printf("\n");
+    for(int i=0; i<number_of_nodes; i++){
+        printf("%s ", nodes[i]);
         for(int j=0; j<number_of_nodes; j++){
             printf("%d ", adj[i][j]);
         }
         printf("\n");
     }
+}
+
+char *ask_origin_node(){
+    char *org = malloc(1);
+    printf("\n\nIngrese el nodo de origen: ");
+    scanf(" %c",org);
+    return org;
 }
 
 int main(int argc, char *argv[]){
@@ -132,4 +146,6 @@ int main(int argc, char *argv[]){
         read_line++;
     }
     print_adj();
+    char *orgin_node = ask_origin_node();
+    int origin_node_index = get_index_of_node(orgin_node);
 }
