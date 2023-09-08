@@ -77,7 +77,7 @@ void dijkstra_with_no_heap(){
 
     printf("\n\n");
     printf("Node - From - Prev\n");             //Print the result
-    for(int i=0; i<number_of_nodes; i++){
+    for(int i=0; i<visitedNodesIndexGuide; i++){
         printf(" ");
         fputs(nodes[dijkstra_no_heap_result[i][0]],stdout);
         printf("  -  %d   -  ",dijkstra_no_heap_result[i][1]);
