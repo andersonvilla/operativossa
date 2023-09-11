@@ -14,7 +14,7 @@ void dijkstra_with_no_heap(int origin_node_index){
         visitedNodesIndex[i]=-1;            //So it doesn't get confused with index 0
     }
 
-    int routedNodes[MAX_NODES];             //Saves the index nodes that have been routed
+    int routedNodes[MAX_NODES]={0};             //Saves the index nodes that have been routed
 
     dijkstra_no_heap_result[0][0]=origin_node_index;    //Origin node is always the first row of the result
     dijkstra_no_heap_result[0][1]=0;                    //And always has cost 0 to itself
