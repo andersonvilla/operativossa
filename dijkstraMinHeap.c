@@ -31,6 +31,7 @@ void dijkstra(int indexNodoInicio){
     */
     for (int i = 0; i < number_of_nodes; i++){
         path[i].distancia = INT_MAX;
+        path[i].nodoPredecesor = " ";
         pq_insert(colaPrioridad, i, INT_MAX);
     }
 
@@ -63,7 +64,7 @@ void dijkstra(int indexNodoInicio){
                 // Si la distancia mínima parcial es mayor a la distancia acumulada hasta el nodo
                 // indexNodoDistanciaMinima + distancia entre ambos nodos, actualizamos la información del nodo adyacente
                 // que se está analizando tanto en el path como en la cola de prioridad
-                if (path[i].distancia > path[indexNodoDistanciaMinima].distancia + distancia){
+                if (path[i].distancia > path[indexNodoDistanciaMinima].distancia + distancia && path[indexNodoDistanciaMinima].distancia + distancia > 0){
                     path[i].distancia = path[indexNodoDistanciaMinima].distancia + distancia;
                     path[i].nodoPredecesor = nodes[indexNodoDistanciaMinima];
                     pq_change_priority(colaPrioridad, i, path[i].distancia);
@@ -81,8 +82,9 @@ void dijkstra(int indexNodoInicio){
     printf("Distancias mínimas desde el nodo %s:\n", nodes[indexNodoInicio]);
     printf("| %-6s | %-24s | %-15s |\n", "Vertex", nombreCol2, "Previous vertex");
     for (int i = 0; i < number_of_nodes; i++) {
-        printf("| %-6s | %-24d | %-15s |\n", nodes[i], path[i].distancia, path[i].nodoPredecesor);
-        //printf("Nodo %s: %s\n", nodes[i], path[i].nodoPredecesor);
+        if(path[i].distancia != INT_MAX){
+            printf("| %-6s | %-24d | %-15s |\n", nodes[i], path[i].distancia, path[i].nodoPredecesor);
+        }
     }
 
 }

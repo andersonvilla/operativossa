@@ -114,9 +114,12 @@ int main(int argc, char *argv[]){
         }
         read_line++;
     }
+    printf("\nMatriz de adyacencia:\n");
     print_adj();
     char *orgin_node = ask_origin_node();
     origin_node_index = get_index_of_node(orgin_node); 
+    printf("\n\nSolución usando un algoritmo SIN el uso de HEAP:\n");
     dijkstra_with_no_heap(origin_node_index);
+    printf("\n\nSolución usando un algoritmo CON el uso de HEAP:\n");
     dijkstra(origin_node_index);
 }

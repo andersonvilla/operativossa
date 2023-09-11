@@ -24,7 +24,6 @@ int get_index_of_node(char *node_to_check){
             break;
         }
     }
-    //printf("Index: %d\n", value);
     return value;
 }
 

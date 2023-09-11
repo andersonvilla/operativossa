@@ -69,15 +69,17 @@ void dijkstra_with_no_heap(int origin_node_index){
         routedNodes[visitedNodesIndexToRoute]=1;      //The node in the index visitedNodesIndexToRoute of visitedNodesIndex has been routed
     }
 
-    printf("\n\n");
-    printf("Node - From - Prev\n");             //Print the result
-    for(int i=0; i<visitedNodesIndexGuide; i++){
-        printf(" ");
-        fputs(nodes[dijkstra_no_heap_result[i][0]],stdout);
-        printf("  -  %d   -  ",dijkstra_no_heap_result[i][1]);
-        if(i!=0){
-            fputs(nodes[dijkstra_no_heap_result[i][2]],stdout);
+    //Printing the table
+    char nombreCol2[] = "Shortest distance from ";
+    strcat(nombreCol2, nodes[origin_node_index]);
+
+    printf("Distancias mínimas desde el nodo %s:\n", nodes[origin_node_index]);
+    printf("| %-6s | %-24s | %-15s |\n", "Vertex", nombreCol2, "Previous vertex");
+    for (int i = 0; i < visitedNodesIndexGuide; i++) {
+        if(i == 0){
+            printf("| %-6s | %-24d |                 |\n", nodes[dijkstra_no_heap_result[i][0]], dijkstra_no_heap_result[i][1]);
+        }else{
+            printf("| %-6s | %-24d | %-15s |\n", nodes[dijkstra_no_heap_result[i][0]], dijkstra_no_heap_result[i][1], nodes[dijkstra_no_heap_result[i][2]]);
         }
-        printf("\n");
     }
 }
